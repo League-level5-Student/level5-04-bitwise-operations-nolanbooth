@@ -51,19 +51,24 @@ package _00_Binary_Conversion;
  * method that converts a decimal integer to a String of binary digits. Enter
  * a negative number and check if it matches your calculations.
  *  *hint* https://en.wikipedia.org/wiki/Two%27s_complement
+ *  Does not work, prints out a bunch of 1s
  */
 public class _03_DecimalToBinary {
     public static void main(String[] args) {
-        System.out.println(" 43 in binary: " + String.format("%32s", convertDecimalToBinary(43)).replace(' ', '0'));
-        System.out.println("-43 in binary: " + convertDecimalToBinary(-43));
+        long number = 2147483647;
+        int number2 = 2147483647;
+    	//why can't a long store a higher number than int
+    	
+    	System.out.println(" " + number + " in binary: " + String.format("%32s", convertDecimalToBinary(number)).replace(' ', '0'));
+        //System.out.println("-43 in binary: " + convertDecimalToBinary(-43));
     }
 
-    public static String convertDecimalToBinary(int decimalNum) {
+    public static String convertDecimalToBinary(long decimalNum) {
         String binaryStr = "";
 
         do {
             // 1. Logical right shift by 1
-            int quotient = decimalNum >>> 1;
+            int quotient = (int) (decimalNum >>> 1);
 
             // 2. Check remainder and add '1' or '0'
             if( decimalNum % 2 != 0 ){
