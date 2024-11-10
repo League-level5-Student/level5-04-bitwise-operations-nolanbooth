@@ -2,6 +2,9 @@ package _02_AND_OR_and_XOR;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 /*
@@ -29,11 +32,63 @@ import org.junit.jupiter.api.Test;
 public class _02_Rotate {
     
     int rotateLeft(int value, int rotateAmount) {
-        return -1;
+//        if(rotateAmount != 0) {
+//    	System.out.println("RotateAmount is NOT zero. Value of value = " + value);//???
+//    	int temp = 0;
+//        
+//        //instead of array list I could have used a queue or something
+//        ArrayDeque<Integer> listOfBits = new ArrayDeque<>();
+//        
+//    	for(int i = 0; i < value; i++) {
+//    		
+//    	temp = value % 10;
+//    	listOfBits.push(temp);
+//    	value = value/10;
+//    	
+//    		
+//    	}
+//    	//now theoretically listOfBits has all the values in the value. Now we gotta shift it by rotateamount
+//    	temp = 0;
+//    	
+//    	
+//    	
+//    	for(int i = 0; i < rotateAmount; i++) {
+//  	System.out.println("Size of listOfBits : " + listOfBits.size());
+//    		
+//    		if(listOfBits.size() != 0) {
+//  		
+//  	
+//    	temp = listOfBits.pop();
+//    	listOfBits.add(temp);
+//    	
+//  	}
+//    		
+//    	}
+//    	//so now theorteically we have shifted the thing rotateAmount times
+//    	
+//    	
+//    	value = 0;
+//    	for(int i = 0; i < listOfBits.size(); i++) {
+//    		value = value * 10;
+//    		value += listOfBits.pop();
+//    		
+//    		
+//    		
+//    	}
+//    	
+//    	return value;
+//        }else {
+//        	return value;
+//        }
+   
+    	
+    	
+    	
+    return Integer.rotateLeft(value, rotateAmount);
     }
     
     int rotateRight(int value, int rotateAmount) {
-        return -1;
+        return Integer.rotateRight(value, rotateAmount);
     }
     
     @Test

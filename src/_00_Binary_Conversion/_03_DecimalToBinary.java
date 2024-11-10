@@ -55,8 +55,8 @@ package _00_Binary_Conversion;
  */
 public class _03_DecimalToBinary {
     public static void main(String[] args) {
-        long number = 2147483647;
-        int number2 = 2147483647;
+       long number = 10;
+      //  int number2 = 2147483647;
     	//why can't a long store a higher number than int
     	
     	System.out.println(" " + number + " in binary: " + String.format("%32s", convertDecimalToBinary(number)).replace(' ', '0'));
@@ -65,23 +65,37 @@ public class _03_DecimalToBinary {
 
     public static String convertDecimalToBinary(long decimalNum) {
         String binaryStr = "";
-
+        //flip the string at the end
+        
         do {
-            // 1. Logical right shift by 1
-            int quotient = (int) (decimalNum >>> 1);
+        	if(decimalNum % 2 == 0) {
+        		binaryStr = binaryStr + "0";
+        	}else {
+        		binaryStr = binaryStr + "1";
+        	}
+        	decimalNum = decimalNum / 2;
+        	
+        	
+        } while(decimalNum != 0);
 
-            // 2. Check remainder and add '1' or '0'
-            if( decimalNum % 2 != 0 ){
-                binaryStr = '1' + binaryStr;
-            } else {
-                binaryStr = '0' + binaryStr;
-            }
-
-            decimalNum = quotient;
-
-            // 3. Repeat until number is 0
-        } while( decimalNum != 0 );
-
-        return binaryStr;
+//        do {
+//            // 1. Logical right shift by 1
+//            int quotient = (int) (decimalNum >>> 1);
+//
+//            // 2. Check remainder and add '1' or '0'
+//            if( decimalNum % 2 != 0 ){
+//                binaryStr = '1' + binaryStr;
+//            } else {
+//                binaryStr = '0' + binaryStr;
+//            }
+//
+//            decimalNum = quotient;
+//
+//            // 3. Repeat until number is 0
+//        } while( decimalNum != 0 );
+        StringBuilder bob = new StringBuilder (binaryStr);
+        bob.reverse();
+        
+        return bob.toString();
     }
 }
