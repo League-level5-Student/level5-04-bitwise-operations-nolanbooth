@@ -147,10 +147,10 @@ public class _02_HexadecimalPrinter implements ActionListener {
         GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.fill = GridBagConstraints.HORIZONTAL;       // This expands the JComponent to fill gridwidth
-        constraints.gridx = column;             // This is the column the JComponent is placed
-        constraints.gridy = row;                // This is the row the JComponent is placed
-        constraints.gridwidth = cellWidth;      // This is how many horizontal cells to span across
-        constraints.gridheight = 1;             // This is how many vertical cells to span across
+        constraints.gridx = column;          				   // This is the column the JComponent is placed
+        constraints.gridy = row;                			  // This is the row the JComponent is placed
+        constraints.gridwidth = cellWidth;    			     // This is how many horizontal cells to span across
+        constraints.gridheight = 1;            			    // This is how many vertical cells to span across
         this.panel.add(component, constraints);
     }
 }

@@ -55,8 +55,9 @@ package _00_Binary_Conversion;
  */
 public class _03_DecimalToBinary {
     public static void main(String[] args) {
-       long number = 10;
-      //  int number2 = 2147483647;
+       long number  = 2147483647;
+       
+        //int number2 = 2147483648;
     	//why can't a long store a higher number than int
     	
     	System.out.println(" " + number + " in binary: " + String.format("%32s", convertDecimalToBinary(number)).replace(' ', '0'));

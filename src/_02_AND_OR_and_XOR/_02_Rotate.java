@@ -30,65 +30,25 @@ import org.junit.jupiter.api.Test;
  *      11111111 11111111 11111111 11110001   // rotate left by 1
  */
 public class _02_Rotate {
-    
+	
+	
     int rotateLeft(int value, int rotateAmount) {
-//        if(rotateAmount != 0) {
-//    	System.out.println("RotateAmount is NOT zero. Value of value = " + value);//???
-//    	int temp = 0;
-//        
-//        //instead of array list I could have used a queue or something
-//        ArrayDeque<Integer> listOfBits = new ArrayDeque<>();
-//        
-//    	for(int i = 0; i < value; i++) {
-//    		
-//    	temp = value % 10;
-//    	listOfBits.push(temp);
-//    	value = value/10;
-//    	
-//    		
-//    	}
-//    	//now theoretically listOfBits has all the values in the value. Now we gotta shift it by rotateamount
-//    	temp = 0;
-//    	
-//    	
-//    	
-//    	for(int i = 0; i < rotateAmount; i++) {
-//  	System.out.println("Size of listOfBits : " + listOfBits.size());
-//    		
-//    		if(listOfBits.size() != 0) {
-//  		
-//  	
-//    	temp = listOfBits.pop();
-//    	listOfBits.add(temp);
-//    	
-//  	}
-//    		
-//    	}
-//    	//so now theorteically we have shifted the thing rotateAmount times
-//    	
-//    	
-//    	value = 0;
-//    	for(int i = 0; i < listOfBits.size(); i++) {
-//    		value = value * 10;
-//    		value += listOfBits.pop();
-//    		
-//    		
-//    		
-//    	}
-//    	
-//    	return value;
-//        }else {
-//        	return value;
-//        }
-   
-    	
-    	
-    	
-    return Integer.rotateLeft(value, rotateAmount);
-    }
+    	  int bitLength = Integer.SIZE; // Number of bits in an int (32 bits)
+          rotateAmount = rotateAmount % bitLength; // Ensure n is within the bit length to prevent overflow
+
+          return (value << rotateAmount) | (value >>> (bitLength - rotateAmount));
+    } 
+      
+  
+    
     
     int rotateRight(int value, int rotateAmount) {
-        return Integer.rotateRight(value, rotateAmount);
+    	int bitLength = Integer.SIZE; // Number of bits in an int (32 bits)
+        rotateAmount = rotateAmount % bitLength; // Ensure n is within the bit length to prevent overflow
+
+        return (value >>> rotateAmount) | (value << (bitLength - rotateAmount));
+        //this is just chatgpt code but I think i understand it now, basically you need the bit length to see how far you should shift the bit
+        //that's why I was having problems with the last code method because I wasn't using the bit length.
     }
     
     @Test
