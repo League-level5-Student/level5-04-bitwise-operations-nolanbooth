@@ -18,8 +18,9 @@ import javax.swing.JTextField;
 /*
  * Goal: Create a program that converts a binary string to ascii, decimal,
  *       and hexadecimal.
- * 
- * Programmers sometimes use a number system called hexadecimal that has 16
+ */
+ 
+/* Programmers sometimes use a number system called hexadecimal that has 16
  * different possible characters per digit. Each digit can be from 0 to F,
  *     hex character: 0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F
  *     decimal value: 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -52,11 +53,22 @@ public class _02_HexadecimalPrinter implements ActionListener {
      * You don't have to handle negative numbers unless you want the challenge!
      */
     String binaryToHex(String binaryStr) {
-        return "-";
+        //hex 
+    	
+    	//hex is now the number of groups of 4 we gotta convert
+    
+    	//so basically convert from binary to int using the remainder method where you divide by a certain thing and get the remainder and write it down
+    	//then do the exact same thing for hex
+    	return Integer.toHexString(Integer.parseInt(binaryStr, 2));
     }
     
     String binaryToDec(String binaryStr) {
-        return "-";
+        
+    	//steps described above.
+    	
+    	//Prepend instead of appent -> string = newthing + string;
+    	
+    	return Integer.parseInt(binaryStr, 2) + "";
     }
 
     /*
@@ -64,10 +76,13 @@ public class _02_HexadecimalPrinter implements ActionListener {
      */
     String binaryToAscii(String binaryStr) {
         if (binaryStr.length() != 8) {
-            return "-";
+            
+        	
+        	
+        	return "-";
         }
-
-        return "-";
+        
+        return ;
     }
     
     public static void main(String[] args) {
