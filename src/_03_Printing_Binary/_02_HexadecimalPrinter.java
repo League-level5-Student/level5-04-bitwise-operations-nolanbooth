@@ -70,7 +70,7 @@ public class _02_HexadecimalPrinter implements ActionListener {
     	
     	return Integer.parseInt(binaryStr, 2) + "";
     }
-
+ 
     /*
      * ASCII values are exactly 8 bits so return '-' if there isn't.
      */
@@ -81,8 +81,9 @@ public class _02_HexadecimalPrinter implements ActionListener {
         	
         	return "-";
         }
+        char c = (char) Integer.parseInt(binaryStr, 2);
         
-        return ;
+        return c + "";
     }
     
     public static void main(String[] args) {
