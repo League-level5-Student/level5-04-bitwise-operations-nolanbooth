@@ -56,19 +56,75 @@ public class Base64Decoder {
     //1. Complete this method so that it returns the index in
     //   the base64Chars array that corresponds to the passed in char.
     public static byte convertBase64Char(char c){
-        return 0;
+     
+     
+    	
+     
+    	for(int i = 0; i < base64Chars.length; i++) {
+    		if(base64Chars[i] == c) {
+    			return (byte) i;
+    			
+    		}
+    	}
+       
+    	return (byte) -1;
+    	
+    	//seems to work, all I'm doing is returning a byte that has the same value as the passed in char
     }
 
     //2. Complete this method so that it will take in a string that is 4
     //   characters long and return an array of 3 bytes (24 bits). The byte
     //   array should be the binary value of the encoded characters.
     public static byte[] convert4CharsTo24Bits(String s){
-        return null;
+     
+    	char[] chars = s.toCharArray();
+    	byte[] charbs = new byte[4];
+    	
+    	for(int i = 0; i < chars.length; i++) {
+    		charbs[i] = (byte) chars[i];
+    	}
+    	//charbs is now full of 4 bytes
+    	byte[] finalbs = new byte[3];
+    	
+    	finalbs[0] = (byte) ((charbs[0] << 2 )| (charbs[1] >> 4)); 
+    	finalbs[1] = (byte) ((charbs[1] << 4 )| (charbs[1] >> 2));
+    	finalbs[2] = (byte) ((charbs[3] << 6 )| (charbs[1] >> 0));
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	return finalbs;
     }
 
     //3. Complete this method so that it takes in a string of any length
     //   and returns the full byte array of the decoded base64 characters.
     public static byte[] base64StringToByteArray(String file) {
-        return null;
+        char[] encoded = file.toCharArray();
+        byte[] bytes = new byte[encoded.length];
+        for(int i = 0; i < encoded.length; i++) {
+        	bytes[i] = (byte) encoded[i];
+        }
+        
+        //now bytes has all the chars
+        
+        
+    //gotta incorporate bit shifting and negative number stuff very complicated
+        //basically if 
+        
+    	byte[] decoded = new byte[4];
+    
+    	decoded[0] = (byte) (bytes[0] >> 2);
+    	decoded[1] = (byte) (((bytes[0] << 4)|(bytes[1] >> 4))&63);
+    	decoded[2] = (byte) (((bytes[1] << 2)|(bytes[2] >> 6))&63);
+    	decoded[3] = (byte) (bytes[2] & 63);
+    	
+    	
+    	
+    	
+    	return decoded;
     }
 }
