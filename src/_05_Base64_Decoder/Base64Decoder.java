@@ -1,5 +1,7 @@
 package _05_Base64_Decoder;
 
+import java.util.ArrayList;
+
 /*
  * Base 64 is a way of encoding binary data using text.
  * Each number 0-63 is mapped to a character.
@@ -81,19 +83,18 @@ public class Base64Decoder {
     	byte[] charbs = new byte[4];
     	
     	for(int i = 0; i < chars.length; i++) {
-    		charbs[i] = (byte) chars[i];
+    		charbs[i] = (byte) convertBase64Char(chars[i]);
     	}
     	//charbs is now full of 4 bytes
     	byte[] finalbs = new byte[3];
     	
     	finalbs[0] = (byte) ((charbs[0] << 2 )| (charbs[1] >> 4)); 
-    	finalbs[1] = (byte) ((charbs[1] << 4 )| (charbs[1] >> 2));
-    	finalbs[2] = (byte) ((charbs[3] << 6 )| (charbs[1] >> 0));
-    	
-    	
-    	
-    	
-    	
+    	finalbs[1] = (byte) ((charbs[1] << 4 )| (charbs[2] >> 2));
+    	finalbs[2] = (byte) ((charbs[2] << 6 )| (charbs[3]));
+    	//original was 
+    	// 0 1
+    	// 1 1
+    	// 3 1
     	
     	
     	
@@ -103,28 +104,42 @@ public class Base64Decoder {
     //3. Complete this method so that it takes in a string of any length
     //   and returns the full byte array of the decoded base64 characters.
     public static byte[] base64StringToByteArray(String file) {
-        char[] encoded = file.toCharArray();
-        byte[] bytes = new byte[encoded.length];
-        for(int i = 0; i < encoded.length; i++) {
-        	bytes[i] = (byte) encoded[i];
-        }
-        
-        //now bytes has all the chars
-        
-        
-    //gotta incorporate bit shifting and negative number stuff very complicated
-        //basically if 
-        
-    	byte[] decoded = new byte[4];
+    	String[] size4 = new String[file.length()/4];
+    	int position  = 0;
+    	for(int i = 0; i < file.length()/4; i++) {
+    		
+    	
+    		int end = position + 4;
+    		size4[i] = file.substring(position, end);
+    		
+    		position += 4;
+    		
+    		
+    	}
+       //size4 now has a bunch of 4 length strings
+    	
+    	ArrayList<Byte> finalLists = new ArrayList<Byte>();
+    	
+    	byte[] temp = new byte[3];
+    	
+    	for(int i = 0; i < size4.length; i++) {
+    		
+    		temp = convert4CharsTo24Bits(size4[i]);
+    		
+    		for(int j = 0; j < temp.length; j++) {
+    			finalLists.add(temp[j]);
+    		}
+    		
+    	}
+    	
+    	byte[] finalarray = new byte[finalLists.size()];
+    	for(int i = 0; i < finalarray.length; i++) {
+    		finalarray[i] = finalLists.get(i);
+    	}
+    	
+        return finalarray;
+    	
+    	
     
-    	decoded[0] = (byte) (bytes[0] >> 2);
-    	decoded[1] = (byte) (((bytes[0] << 4)|(bytes[1] >> 4))&63);
-    	decoded[2] = (byte) (((bytes[1] << 2)|(bytes[2] >> 6))&63);
-    	decoded[3] = (byte) (bytes[2] & 63);
-    	
-    	
-    	
-    	
-    	return decoded;
     }
 }
